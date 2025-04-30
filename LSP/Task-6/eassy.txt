@@ -1,0 +1,46 @@
+Linux Privilege Levels: Kernel Mode and User Mode
+
+Linux, like other modern operating systems, is built on the principle of privilege separation, which ensures system security and stability. It uses two primary privilege levels — Kernel Mode and User Mode — to control access to system resources and manage execution of processes.
+
+1. User Mode: Limited Privilege
+
+User Mode is the default execution environment for most software applications. It has limited access to hardware and system resources. In this mode, processes cannot perform operations that could interfere with the kernel or other processes. Any direct access to memory, devices, or low-level system components is prohibited.
+
+When a program needs to perform such an operation (e.g., reading a file or allocating memory), it must request the kernel to do it on its behalf through system calls (like open(), read(), write(), etc.).
+
+Examples of operations in User Mode:
+	•	Running applications like web browsers, editors, or compilers.
+	•	Requesting file access using system calls.
+	•	Making network requests through APIs.
+	•	Executing scripts or user-level programs.
+
+Benefits of User Mode:
+	•	Increases system security: if a user program crashes, it doesn’t affect the whole system.
+	•	Encourages isolation between processes.
+
+2. Kernel Mode: Full Privilege
+
+Kernel Mode is where the core of the operating system — the Linux kernel — operates. In this mode, the system has unrestricted access to all hardware and can execute any CPU instruction. It manages resources like memory, CPU scheduling, file systems, and device drivers.
+Only trusted and critical components of the OS run in kernel mode. Transitions to kernel mode occur via system calls, hardware interrupts, or exceptions.
+Examples of operations in Kernel Mode:
+	•	Allocating memory using virtual memory mechanisms.
+	•	Managing CPU time with schedulers.
+	•	Handling hardware interactions via device drivers.
+	•	Reading/writing to disks, networking hardware, or other I/O devices.
+	•	Switching between user processes (context switching).
+
+Risks of Kernel Mode:
+	•	A bug in kernel code can crash the entire system.
+	•	Direct memory access can lead to corruption if mismanaged.
+
+3. Switching Between Modes
+
+The transition between user and kernel mode happens through:
+	•	System calls: User requests privileged operations (e.g., opening a file).
+	•	Interrupts: Hardware signals the processor (e.g., keyboard input).
+	•	Exceptions: Errors like division by zero trigger the switch.
+
+When such a transition occurs, the CPU switches to kernel mode, executes the required kernel code, and returns to user mode when done. This isolation prevents user programs from directly harming the system.
+
+Conclusion:-
+The distinction between User Mode and Kernel Mode is fundamental to Linux’s design, ensuring security, stability, and process isolation. By keeping user processes separate from the kernel, Linux enforces strict control over what programs can do, reducing the risk of crashes and unauthorized access. This layered approach is what enables Linux to support robust multitasking and secure multi-user environments.

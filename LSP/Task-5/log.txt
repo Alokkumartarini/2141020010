@@ -1,0 +1,6 @@
+[INFO] Server started successfully
+[ERROR] Failed to connect to database
+[WARNING] Disk space low
+[ERROR] Timeout while waiting for response
+[INFO] User login successful
+[ERROR] Configuration file missing
